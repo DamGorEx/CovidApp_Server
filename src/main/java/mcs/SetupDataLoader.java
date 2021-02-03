@@ -2,10 +2,7 @@ package mcs;
 
 import lombok.SneakyThrows;
 import mcs.Model.*;
-import mcs.Model.Repositories.ItemGroupRepository;
-import mcs.Model.Repositories.OrderRepository;
-import mcs.Model.Repositories.ProductRepository;
-import mcs.Model.Repositories.UserRepository;
+import mcs.Model.Repositories.*;
 import mcs.Service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -34,12 +31,14 @@ public class SetupDataLoader {
     private OrderRepository orderRepostiory;
     private ItemGroupRepository itemGroupRepository;
     private ProductRepository productRepository;
+    private NewsRepository newsRepository;
     @PostConstruct
     private void setUpUserRep() {
         userRepository = applicationContext.getBean(UserRepository.class);
         orderRepostiory = applicationContext.getBean(OrderRepository.class);
         itemGroupRepository = applicationContext.getBean(ItemGroupRepository.class);
         productRepository = applicationContext.getBean(ProductRepository.class);
+        newsRepository  = applicationContext.getBean(NewsRepository.class);
     }
 
     @EventListener
@@ -58,6 +57,7 @@ public class SetupDataLoader {
         setUpOrders(testUser, testBasket);
         setUpOrders(testUser, testBasket2);
         setUpOrders(testUser1, testBasket1);
+
         alreadySetup = true;
     }
 
@@ -75,11 +75,22 @@ public class SetupDataLoader {
         }
         var img1 = new Image("Image1", "image/jpeg", ImageService.comprese(fileToTest));
         pr.setImage(img1);
+        pr.addCategories(Product.Category.mask);
         pr1.setImage(img1);
+        pr1.addCategories(Product.Category.hygiene_products);
         pr2.setImage(img1);
+        pr2.addCategories(Product.Category.books);
         pr3.setImage(img1);
+        pr3.addCategories(Product.Category.suplements);
         productRepository.saveAll(Arrays.asList(pr, pr1, pr2, pr3));
         productRepository.flush();
+        News news = new News();
+        news.addImg(img1);
+        news.addParagraph("dasfsdfasfadsf");
+        news.addParagraph("2");
+        news.addParagraph("3");
+        news.addParagraph("4");
+        newsRepository.saveAndFlush(news);
         return Arrays.asList(pr, pr1, pr2);
     }
 
