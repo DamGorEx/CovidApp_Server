@@ -32,18 +32,19 @@ public @Data class User {
     private List<Role> roles;
 
     public User(String fName, String lName, String address, String phNumber, String email, String password) {
+        this();
         this.fName = fName;
         this.lName = lName;
         this.address = address;
         this.phNumber = phNumber;
         this.email = email;
-        this.shopOrders = new ArrayList<>();
-        this.roles = new ArrayList<>();
         setPassword(password);
     }
 
     public User() {
-
+        ArrayList<ShopOrder> orders = new ArrayList<>();
+        this.shopOrders = orders;
+        this.roles = new ArrayList<>();
     }
 
     public void setPassword (String pass) {
