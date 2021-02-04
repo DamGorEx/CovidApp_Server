@@ -12,7 +12,7 @@ class ImageServiceTest {
 
     @BeforeAll
     static void doBeforeAll() throws IOException {
-        fileToTest = Files.readAllBytes(Paths.get("/Users/DamianGoraj/Documents/CovidApp/src/test/java/Service/panda.jpg"));
+        fileToTest = Files.readAllBytes(Paths.get("/Users/domlu/CovidApp_Server/src/test/java/panda.jpg"));
     }
 
     @Test

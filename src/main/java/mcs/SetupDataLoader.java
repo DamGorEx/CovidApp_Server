@@ -63,26 +63,71 @@ public class SetupDataLoader {
 
     @SneakyThrows
     private List<Product> setUpProduct() {
-        Product pr = new Product("product1", "Product 1 jest najlepszy", 3d);
-        Product pr1 = new Product("product12", "Product 2 to arcydzielo sztuki", 5d);
-        Product pr2 = new Product("product13", "Pro 3 to nic specjalnego", 7d);
-        Product pr3 = new Product("product11sd3", "unikatowy w konlekcji", 7d);
+        Product pr = new Product("Maska 1", "Dla wielbicieli kotow", 5d);
+        Product pr1 = new Product("Maska 2", "Dla wielbicieli psow", 5d);
+        Product pr2 = new Product("Maska 3", "Dla wielbicieli innych psow", 5d);
+        Product pr3 = new Product("Maska 4", "Dla wielbicieli orlow", 7d);
+        Product pr4 = new Product("Maska 5", "Dla wielbicieli goryli", 7d);
+        Product pr5 = new Product("Maska 6", "Dla wielbicieli innych goryli", 7d);
+        Product pr6 = new Product("Maska 7", "Dla wielbicieli malpek", 7d);
+        Product pr7 = new Product("Zel 1", "Zel antybakteryjny zapachowy piesek", 15d);
+        Product pr8 = new Product("Zel 2", "Zel antybakteryjny zapachowy panda", 15d);
+        Product pr9 = new Product("Zel 3", "Zel antybakteryjny zapachowy tygrysek", 15d);
         byte[] fileToTest = new byte[0];
+        byte[] fileToTest2 = new byte[0];
+        byte[] fileToTest3 = new byte[0];
+        byte[] fileToTest4 = new byte[0];
+        byte[] fileToTest5 = new byte[0];
+        byte[] fileToTest6 = new byte[0];
+        byte[] fileToTest7 = new byte[0];
+        byte[] fileToTest8 = new byte[0];
+        byte[] fileToTest9 = new byte[0];
+        byte[] fileToTest10 = new byte[0];
         try {
-            fileToTest = Files.readAllBytes(Paths.get("/Users/DamianGoraj/Documents/CovidApp/src/test/java/panda.jpg"));
+            fileToTest = Files.readAllBytes(Paths.get("/Users/domlu/CovidApp_Server/src/test/java/images/cat.jpg"));
+            fileToTest2 = Files.readAllBytes(Paths.get("/Users/domlu/CovidApp_Server/src/test/java/images/dog.jpg"));
+            fileToTest3 = Files.readAllBytes(Paths.get("/Users/domlu/CovidApp_Server/src/test/java/images/dog2.jpg"));
+            fileToTest4 = Files.readAllBytes(Paths.get("/Users/domlu/CovidApp_Server/src/test/java/images/eagle.jpg"));
+            fileToTest5 = Files.readAllBytes(Paths.get("/Users/domlu/CovidApp_Server/src/test/java/images/gorilla.jpg"));
+            fileToTest6 = Files.readAllBytes(Paths.get("/Users/domlu/CovidApp_Server/src/test/java/images/gorilla_man.jpg"));
+            fileToTest7 = Files.readAllBytes(Paths.get("/Users/domlu/CovidApp_Server/src/test/java/images/monkey.jpg"));
+            fileToTest8 = Files.readAllBytes(Paths.get("/Users/domlu/CovidApp_Server/src/test/java/images/zel.jpg"));
+            fileToTest9 = Files.readAllBytes(Paths.get("/Users/domlu/CovidApp_Server/src/test/java/images/zel2.jpg"));
+            fileToTest10 = Files.readAllBytes(Paths.get("/Users/domlu/CovidApp_Server/src/test/java/images/zel3.jpg"));
         } catch (IOException e) {
             e.printStackTrace();
         }
         var img1 = new Image("Image1", "image/jpeg", ImageService.comprese(fileToTest));
+        var img2 = new Image("Image2", "image/jpeg", ImageService.comprese(fileToTest2));
+        var img3 = new Image("Image3", "image/jpeg", ImageService.comprese(fileToTest3));
+        var img4 = new Image("Image4", "image/jpeg", ImageService.comprese(fileToTest4));
+        var img5 = new Image("Image5", "image/jpeg", ImageService.comprese(fileToTest5));
+        var img6 = new Image("Image6", "image/jpeg", ImageService.comprese(fileToTest6));
+        var img7 = new Image("Image7", "image/jpeg", ImageService.comprese(fileToTest7));
+        var img8 = new Image("Image8", "image/jpeg", ImageService.comprese(fileToTest8));
+        var img9 = new Image("Image9", "image/jpeg", ImageService.comprese(fileToTest9));
+        var img10 = new Image("Image10", "image/jpeg", ImageService.comprese(fileToTest10));
         pr.setImage(img1);
         pr.addCategories(Product.Category.mask);
-        pr1.setImage(img1);
-        pr1.addCategories(Product.Category.hygiene_products);
-        pr2.setImage(img1);
-        pr2.addCategories(Product.Category.books);
-        pr3.setImage(img1);
-        pr3.addCategories(Product.Category.suplements);
-        productRepository.saveAll(Arrays.asList(pr, pr1, pr2, pr3));
+        pr1.setImage(img2);
+        pr1.addCategories(Product.Category.mask);
+        pr2.setImage(img3);
+        pr2.addCategories(Product.Category.mask);
+        pr3.setImage(img4);
+        pr3.addCategories(Product.Category.mask);
+        pr4.setImage(img5);
+        pr4.addCategories(Product.Category.mask);
+        pr5.setImage(img6);
+        pr5.addCategories(Product.Category.mask);
+        pr6.setImage(img7);
+        pr6.addCategories(Product.Category.mask);
+        pr7.setImage(img8);
+        pr7.addCategories(Product.Category.hygiene_products);
+        pr8.setImage(img9);
+        pr8.addCategories(Product.Category.hygiene_products);
+        pr9.setImage(img10);
+        pr9.addCategories(Product.Category.hygiene_products);
+        productRepository.saveAll(Arrays.asList(pr, pr1, pr2, pr3, pr4, pr5, pr6, pr7,pr8,pr9));
         productRepository.flush();
         News news = new News();
         news.addImg(img1);
@@ -90,8 +135,16 @@ public class SetupDataLoader {
         news.addParagraph("2");
         news.addParagraph("3");
         news.addParagraph("4");
+        news.addParagraph("5");
+        news.addParagraph("6");
+        news.addParagraph("7");
+        news.addParagraph("8");
+        news.addParagraph("9");
+        news.addParagraph("10");
+        news.addParagraph("11");
+
         newsRepository.saveAndFlush(news);
-        return Arrays.asList(pr, pr1, pr2);
+        return Arrays.asList(pr, pr1, pr2, pr4, pr5, pr6,pr7,pr8,pr9);
     }
 
     private ItemGroup setUpTestBasket(List<Product> products) {

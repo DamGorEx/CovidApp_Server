@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class ProductDTOTest {
 
     @Test
@@ -16,7 +14,7 @@ class ProductDTOTest {
         dto.setName("name");
         dto.setImgId("123");
         dto.setPrice(23d);
-        dto.setCategories(Arrays.asList("mask", "books"));
+        dto.setCategories(Arrays.asList("images/mask", "books"));
         Product pr = new Product(dto);
     }
 
