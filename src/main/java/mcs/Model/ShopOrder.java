@@ -19,7 +19,7 @@ public @Data class ShopOrder {
     private ShipMethod shipMethod;
     private String address;
     @Enumerated(EnumType.STRING)
-    private OrderStatus status = OrderStatus.New;
+    private OrderStatus status;
 
     @ManyToOne
     @Cascade(CascadeType.ALL)
@@ -31,11 +31,17 @@ public @Data class ShopOrder {
     private ItemGroup basket;
 
     public ShopOrder (User user, ItemGroup itemGroup) {
+        this();
         this.user = user;
         this.basket = itemGroup;
         user.addOrder(this);
+        this.setStatus(OrderStatus.New);
+        this.address = user.getAddress();
     }
-    public ShopOrder() {};
+    public ShopOrder() {
+       this.status = OrderStatus.New;
+       this.date = LocalDate.now();
+    };
 
     public Double getAmount () {
         return this.basket.getItemList().stream()
