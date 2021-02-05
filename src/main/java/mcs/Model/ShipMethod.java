@@ -1,7 +1,7 @@
 package mcs.Model;
 
 public enum ShipMethod {
-    UPC("UPC"), PP("poczta polska"), OW("odbiórk włsany");
+    UPC("UPC"), PP("poczta polska"), OW("odbiór własny");
 
     String name;
     ShipMethod (String name) {
