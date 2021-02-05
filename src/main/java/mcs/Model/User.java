@@ -24,6 +24,7 @@ public @Data class User {
     public static final PasswordEncoder PASSWORD_ENCODER = new BCryptPasswordEncoder();
     @OneToMany
     @Cascade(CascadeType.ALL)
+    @JsonIgnore
     private List<ShopOrder> shopOrders;
     @JsonIgnore
     private String password;
@@ -97,7 +98,7 @@ public @Data class User {
             @GenericGenerator(name="system-uuid", strategy = "uuid")
             private String id;
             private String name;
-
+            @JsonIgnore
             @ManyToMany (mappedBy = "privileges")
             private List<Role> roles;
 
