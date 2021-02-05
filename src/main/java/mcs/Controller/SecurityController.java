@@ -27,8 +27,8 @@ public class SecurityController {
         User user = userRepository.findByEmail(principal.getName());
         var roleAdmmExists = user.getRoles().stream()
                 .map(User.Role::getName)
-                .filter(s -> s.toLowerCase()
-                        .equals("admin")).count() > 0;
+                .filter(s -> s
+                        .equals("ROLE_ADMIN")).count() > 0;
 
         CredentialDTO credentialDTO = new CredentialDTO();
         credentialDTO.setLogin(user.getEmail());
